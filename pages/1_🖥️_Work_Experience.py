@@ -10,6 +10,7 @@ def work_page():
     st.markdown("""This Decision Tree Regression model is trained on Melbourne housing data to predict housing prices.
     The model uses feature optimization, tuned with leaf node sizes to minimize Mean Absolute Error.
     """)
+    st.write("  \n")
     st.write("##### Actual vs. Predicted Prices")
 
     subpage = st.sidebar.selectbox("Projects at Data Annotation Tech", subpages)
@@ -20,12 +21,15 @@ def work_page():
         model_2()
         show_code(model_2)
 
+
 def decision_tree():
     import pandas as pd
-    from sklearn.tree import DecisionTreeRegressor
+    import time
+    import matplotlib.pyplot as plt
+    from sklearn.tree import DecisionTreeRegressor, plot_tree
     from sklearn.metrics import mean_absolute_error
     from sklearn.model_selection import train_test_split
-    import time
+
 
     # Load and clean data
     data = pd.read_csv("./data/melb_data.csv")
@@ -84,6 +88,19 @@ def decision_tree():
     st.dataframe(results_df.T)
     st.write("Feature Values")
     st.dataframe(val_X.T, height = 200)
+
+    # Sample tree diagram
+    st.write("  \n #### Simplified Tree Model:")
+    sample_model = DecisionTreeRegressor(max_leaf_nodes=6, random_state=0)
+    sample_model.fit(X, y)
+    fig, ax = plt.subplots(figsize=(20,8))
+    plot_tree(sample_model, filled=True, feature_names=features, ax=ax)
+    st.pyplot(fig)
+    st.write("""
+    This plot illustrates a simplified version of the decision tree regressor trained on Melbourne's Housing data.
+    Each node in the tree presents two paths to traverse based on a feature inequality, and the subsequent nodes indicate the predicted price.
+    Features of the seleteced test data is shown above.
+    """)
 
 
 def model_2():
