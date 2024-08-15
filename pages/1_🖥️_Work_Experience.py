@@ -74,7 +74,7 @@ def decision_tree():
         time.sleep(0.05)
 
     progress_bar.empty()
-    
+
     # Display mae
     mae = mean_absolute_error(val_y, predictions)
     st.write("Mean Absolute Error: $", mae)
