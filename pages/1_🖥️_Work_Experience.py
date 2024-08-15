@@ -28,7 +28,7 @@ def decision_tree():
     import time
 
     # Load and clean data
-    data = pd.read_csv("data/melb_data.csv")
+    data = pd.read_csv("./data/melb_data.csv")
     data = data.dropna(axis=0)
 
     # Choose target and features, features optimized
