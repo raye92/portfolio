@@ -120,6 +120,10 @@ def decision_tree():
 
 
 def model_2():
+    # DEL PREV TEXT
+    #
+    #
+    #
     st.title("Model 2")
 
 
