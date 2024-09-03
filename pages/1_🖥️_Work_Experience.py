@@ -6,19 +6,13 @@ subpages = ["Regression Models", "Model 2"]
 def work_page():
     st.set_page_config(page_title = "Work Experience", page_icon = "🖥️")
 
-    st.write("### Melbourne Housing Price Prediction")
-    st.markdown("""Two models I worked on at Data Annotation are Decision Tree and Random Forest models.
-    These regression models are trained on Melbourne housing data to predict housing prices.
-    The models use feature optimization, fitted with leaf node optimization to minimize mean absolute error (MAE).
-    """)
-    st.write("  \n")
-    st.write("##### Actual vs. Predicted Prices")
-
     subpage = st.sidebar.selectbox("Projects at Data Annotation Tech", subpages)
     if subpage == "Regression Models":
+        # st.empty()
         decision_tree()
         show_code(decision_tree)
     elif subpage == "Model 2":
+        # st.empty()
         model_2()
         show_code(model_2)
 
@@ -32,6 +26,13 @@ def decision_tree():
     from sklearn.metrics import mean_absolute_error
     from sklearn.model_selection import train_test_split
 
+    st.write("### Melbourne Housing Price Prediction")
+    st.markdown("""Two models I worked on at Data Annotation are Decision Tree and Random Forest models.
+    These regression models are trained on Melbourne housing data to predict housing prices.
+    The models use feature optimization, fitted with leaf node optimization to minimize mean absolute error (MAE).
+    """)
+    st.write("  \n")
+    st.write("##### Actual vs. Predicted Prices")
 
     # Load and clean data
     data = pd.read_csv("./data/melb_data.csv")
@@ -120,10 +121,6 @@ def decision_tree():
 
 
 def model_2():
-    # DEL PREV TEXT
-    #
-    #
-    #
     st.title("Model 2")
 
 

@@ -10,12 +10,19 @@ def home_page():
 
     st.image("./data/pfp.jpg", width = 200)
 
-    st.write("### Skills")
 
-    st.button("Python")
-    st.button("Pandas")
-    st.button("sk-learn")
-    st.button("Artificial Intelligence")
+    st.subheader("Skills & Tools ⚒️")
+    skills = ["Python", "C++", "Java", "SQL", "RobotC", "Machine Learning", "Data Analysis & Visualization", "Database Management", "Backend Development", "Artificial Intelligence", "Computer Vision", "Pandas", "sk-learn"]
+    skill = iter(skills)
+    num_columns = 5
+    for x in range( 1 + (len(skills) // num_columns) ):
+        column = st.columns(num_columns)
+        for i in range(num_columns):
+            try:
+                column[i].button(next(skill))
+            except:
+                break
+
 
     st.sidebar.success("Select a page above.")
 
