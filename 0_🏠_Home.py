@@ -1,7 +1,10 @@
 import streamlit as st
+from streamlit_timeline import timeline
 
 def home_page():
     st.set_page_config(page_title = "Home", page_icon="🏠")
+
+    st.sidebar.success("Select a page above.")
 
     st.markdown("""
     # Hi. I'm Ray. A Programmer.
@@ -10,6 +13,7 @@ def home_page():
 
     st.image("./data/pfp.jpg", width = 200)
 
+    timeline_js()
 
     st.subheader("Skills & Tools ⚒️")
     skills = ["Python", "C++", "Java", "SQL", "RobotC", "Machine Learning", "Data Analysis & Visualization", "Database Management", "Backend Development", "Artificial Intelligence", "Computer Vision", "Pandas", "sk-learn"]
@@ -24,8 +28,12 @@ def home_page():
                 break
 
 
-    st.sidebar.success("Select a page above.")
-
+def timeline_js():
+    st.subheader("Career Overview")
+    with st.spinner(text="Building line"):
+        with open('./data/timeline.json', "r") as f:
+            data = f.read()
+            timeline(data, height=500)
 
 if __name__ == "__main__":
     home_page()
