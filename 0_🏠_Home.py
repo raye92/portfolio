@@ -8,10 +8,11 @@ def home_page():
 
     st.markdown("""
     # Hi. I'm Ray. A Programmer.
-    I have a passion for problem solving, software development, and artificial intelligence.
     """)
 
-    st.image("./data/pfp.jpg", width = 200)
+    column = st.columns([1, 2], vertical_alignment = "bottom")
+    column[0].image("./data/pfp.jpg", width = 200)
+    column[1].write("I have a passion for problem solving, software development, and artificial intelligence.")
 
     timeline_js()
 

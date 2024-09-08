@@ -8,11 +8,9 @@ def work_page():
 
     subpage = st.sidebar.selectbox("Projects at Data Annotation Tech", subpages)
     if subpage == "Regression Models":
-        # st.empty()
         decision_tree()
         show_code(decision_tree)
     elif subpage == "Model 2":
-        # st.empty()
         model_2()
         show_code(model_2)
 
