@@ -1,0 +1,68 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]           [Type]       [Port(s)]
+// Drivetrain       drivetrain   6, 10, 1, 20, 21
+// LIntake          motor        12
+// RIntake          motor        19
+// VisionSensor     vision       13
+// Controller1      controller
+// LShooter         motor        2
+// RShooter         motor        11
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
+// Vision function
+void fVision(int iObjectCase, int iTimeOut);
+
+int iVisionState; // use to toggle vision assist on and off
+int iVisionObject = 1; // determine which object to seek
+int iVisionCenter = 158; // define center of vision sensor screen
+int iVisionOffset = 15; // use to define vision sensor offset value
+
+double kP = 0.5;
+double kI = 0.01;
+double kD = 0.1;
+
+int error = 0;
+int prevError = 0;
+double integral = 0;
+
+/*---------------------------------------------------------------------------*/
+/* User Control Task */
+/*---------------------------------------------------------------------------*/
+while (1) {
+    // ### Vision tasks ###
+    if (iVisionState == 1) {
+        switch (iVisionObject) {
+            case 1: // perform task if desired object is the first defined, which is orange
+                VisionSensor.takeSnapshot(1);
+        }
+
+        // Turn robot to object using PID
+        if (VisionSensor.largestObject.exists) {
+            error = VisionSensor.largestObject.centerX - (iVisionCenter + iVisionOffset);
+
+            // Proportional, Integral, and Derivative terms
+            double proportional = error * kP;
+            integral += error;
+            double integralTerm = integral * kI;
+            double derivativeTerm = (error - prevError) * kD;
+
+            double velocity = proportional + integralTerm + derivativeTerm;
+
+            if (error > 1) {
+                Drivetrain.turn(right, velocity, rpm);
+            }
+            else if (error < -1) {
+                Drivetrain.turn(left, velocity, rpm);
+            }
+            else {
+                Drivetrain.setStopping(brake);
+            }
+
+            prevError = error; 
+        }
+    }
+
+    // Sleep for 25 milliseconds to free up resources for other tasks
+    vex::task::sleep(25);
+}

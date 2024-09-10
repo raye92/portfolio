@@ -1,5 +1,5 @@
 import streamlit as st
-from utils import show_code
+from utils import file_code
 
 def colab_page():
     st.set_page_config(page_title = "Team Experience", page_icon = "🤝")
@@ -32,6 +32,8 @@ def vision():
     st.write("With Vex's computer vision library we can calculate the error for PID (( x + 1/2 width ) - midpoint 158) to center our robot to the game element.")
     st.image("./data/pid_diagram.png")
     st.write("Continuously calculating error at short intervals allows us to minimize motor overshooting, oscillation, and steady-state error. Error multiplied by dt for the derivative term, and Error multiplied by t for the integral term. ")
+
+    file_code("./data/vision_code.txt", True)
 
 if __name__ == "__main__":
     colab_page()
