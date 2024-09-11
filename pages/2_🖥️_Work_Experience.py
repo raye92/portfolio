@@ -120,6 +120,7 @@ def decision_tree():
 
 def model_2():
     st.title("Model 2")
+    st.write("// Under development ...")
 
 
 if __name__ == "__main__":
