@@ -10,9 +10,11 @@ def home_page():
     # Hi. I'm Ray. A Programmer.
     """)
 
-    column = st.columns([1, 2], vertical_alignment = "bottom")
-    column[0].image("./data/pfp.jpg", width = 200)
+    column = st.columns([2, 3], vertical_alignment = "bottom")
+    column[0].image("./data/pfp.jpg", width = 250)
     column[1].write("I have a passion for problem solving, software development, and artificial intelligence.")
+    column[1].link_button("LinkedIn", "https://raysworld.streamlit.app", help="Let's Connect!")
+    st.write(" ") #indentation
 
     timeline_js()
 
