@@ -38,7 +38,7 @@
           "month":"6"
         },
         "text": {
-          "headline": "First team: robotics",
+          "headline": "First team: Robotics",
           "text": "<p>Team Robodox 599 <br> Roles: Captain, head programmer <br>My introduction to C++ and <a href='https://raysworld.streamlit.app/~/+/Collaborative_Experience'>Computer vision.</a></p> "
         }
       },
@@ -75,4 +75,5 @@
         }
       }
     ]
+    "zoom_adjust": -10
 }
