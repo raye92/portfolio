@@ -7,7 +7,7 @@ def home_page():
     st.sidebar.success("Select a page above.")
 
     st.markdown("""
-    # Hi. I'm Ray. A Programmer.
+    # Hi, I'm Ray. A Programmer.
     """)
 
     timeline_js()
